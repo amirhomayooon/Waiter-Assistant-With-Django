@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+<textarea id="requests" rows="20">
+
+</textarea>
+
+<body>
+    Waiter
+    <script type="text/javascript">
+        const socket = new WebSocket('ws://' + window.location.host + '/waiting')
+        socket.onmessage = function (e) {
+            document.getElementById('requests').value += 'e' + '\n';
+        }
+    </script>
+</body>
+
+</html>

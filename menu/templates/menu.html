@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <h2>Menu</h2>
+    <h2>{{ desk.title }}</h2>
+    <h2 id="call">call waiter</h2>
+    <ul>
+        {% for category in categories %}
+        <li>{{ category.title }}
+            <ul>
+                {% for item in category.item_set.all %}
+                {{ item.title }} --- {{ item.price }}
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <script type="text/javascript">
+        document.getElementById('call').addEventListener('click', function () {
+            fetch('/request?desk={{ desk.code }}')
+        })
+    </script>
+</body>
+
+</html>
